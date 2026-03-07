@@ -1,0 +1,111 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 16px;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-primary);
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.left, .right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoIcon {
+  color: var(--accent-green);
+  display: flex;
+  align-items: center;
+}
+
+.logoText {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-primary);
+}
+
+.statusPills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statusPill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+.liveBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  background: var(--accent-green-dim);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse-dot 2s ease-in-out infinite;
+  --dot-color: var(--accent-green);
+}
+
+.clock {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.dateZone {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .statusPills {
+    display: none;
+  }
+  .dateZone {
+    display: none;
+  }
+}
