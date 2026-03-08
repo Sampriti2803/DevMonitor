@@ -1,0 +1,181 @@
+/* WidgetPicker — dropdown panel */
+
+.wrapper {
+    position: relative;
+}
+
+/* ---- Trigger button ---- */
+.trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-primary);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.trigger:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+}
+
+/* ---- Dropdown panel ---- */
+.panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 260px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: pickerFadeIn 0.15s ease;
+    overflow: hidden;
+}
+
+@keyframes pickerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.panelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.panelTitle {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.panelCount {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.resetBtn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: 1px solid var(--border-primary);
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    padding: 3px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.resetBtn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+}
+
+.panelBody {
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 4px 0;
+}
+
+/* ---- Individual widget item ---- */
+.item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 14px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: background 0.1s ease;
+    text-align: left;
+}
+
+.item:hover {
+    background: var(--bg-card-hover);
+}
+
+.itemActive .itemLabel {
+    color: var(--text-primary);
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background 0.15s ease;
+}
+
+.itemLabel {
+    flex: 1;
+    min-width: 0;
+    color: var(--text-tertiary);
+    transition: color 0.15s ease;
+}
+
+/* ---- Toggle switch ---- */
+.toggle {
+    flex-shrink: 0;
+}
+
+.toggleTrack {
+    display: flex;
+    align-items: center;
+    width: 28px;
+    height: 16px;
+    border-radius: 8px;
+    background: var(--border-primary);
+    padding: 2px;
+    transition: background 0.2s ease;
+    position: relative;
+}
+
+.toggleOn {
+    background: var(--accent-blue);
+}
+
+.toggleThumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    transition: transform 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.toggleOn .toggleThumb {
+    transform: translateX(12px);
+}
