@@ -176,7 +176,3 @@ All API routes are under `/api/` and require **no API keys**:
 This project is open source. See [LICENSE](LICENSE) for details.
 
 ---
-
-<div align="center">
-  <sub>Built with ☕ by <a href="https://github.com/Pranavh-2004">Pranavh-2004</a></sub>
-</div>
