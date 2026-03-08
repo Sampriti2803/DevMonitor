@@ -27,6 +27,7 @@ export const ENDPOINTS = {
   ARXIV_DC: "/api/arxiv?category=cs.DC",
 
   LLM_STATUS: "/api/llm-status",
+  LLM_LEADERBOARD: "/api/llm-leaderboard",
   DEV_RELEASES: "/api/dev-releases",
 } as const;
 
