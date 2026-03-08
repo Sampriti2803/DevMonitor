@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
+import WidgetPicker from "./WidgetPicker";
 
 export default function Header() {
   const [time, setTime] = useState<Date>(new Date());
@@ -66,8 +67,25 @@ export default function Header() {
             <span>Vercel</span>
           </div>
         </div>
+        <div className={styles.divider} />
+        <div className={styles.quickLinks}>
+          <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" className={styles.quickLink}>
+            ChatGPT
+          </a>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className={styles.quickLink}>
+            Gemini
+          </a>
+          <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className={styles.quickLink}>
+            Claude
+          </a>
+          <a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer" className={styles.quickLink}>
+            Perplexity
+          </a>
+        </div>
       </div>
       <div className={styles.right}>
+        <WidgetPicker />
+        <div className={styles.divider} />
         <div className={styles.liveBadge}>
           <span className={styles.liveDot} />
           LIVE
