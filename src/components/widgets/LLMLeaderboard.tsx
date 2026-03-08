@@ -3,6 +3,7 @@ import { useState } from "react";
 import WidgetCard from "../WidgetCard";
 import { useFetch } from "@/hooks/useFetch";
 import styles from "./widgets.module.css";
+import widgetCardStyles from "../WidgetCard.module.css";
 
 interface LeaderboardModel {
     rank: number;
@@ -46,17 +47,7 @@ const CREATOR_COLORS: Record<string, string> = {
     Other: "var(--text-muted)",
 };
 
-const CATEGORY_ICONS: Record<string, string> = {
-    text: "💬",
-    code: "🧑‍💻",
-    vision: "👁️",
-    document: "📄",
-    "text-to-image": "🎨",
-    "image-edit": "✏️",
-    search: "🔍",
-    "text-to-video": "🎬",
-    "image-to-video": "📹",
-};
+
 
 function formatCtx(ctx: number | null): string {
     if (ctx === null) return "—";
@@ -115,43 +106,34 @@ export default function LLMLeaderboard() {
             lastUpdated={lastUpdated}
             onRefresh={refresh}
         >
-            {/* Category Tabs */}
+            {/* Horizontal Scrolling Category Tabs */}
             {categories.length > 0 && (
                 <div
                     style={{
-                        display: "flex",
-                        gap: 2,
-                        padding: "4px 0 6px",
+                        padding: "8px 14px",
                         borderBottom: "1px solid var(--border-primary)",
                         marginBottom: 2,
                         overflowX: "auto",
+                        overflowY: "hidden",
                     }}
                 >
-                    {categories.map((cat) => (
-                        <button
-                            key={cat.key}
-                            onClick={() => setActiveCategory(cat.key)}
-                            style={{
-                                padding: "3px 8px",
-                                borderRadius: 6,
-                                border: "none",
-                                cursor: "pointer",
-                                fontSize: 11,
-                                fontFamily: "var(--font-mono)",
-                                fontWeight: activeCategory === cat.key ? 600 : 400,
-                                background: activeCategory === cat.key ? "var(--accent-purple)" : "transparent",
-                                color: activeCategory === cat.key ? "#fff" : "var(--text-tertiary)",
-                                transition: "all 0.15s ease",
-                                whiteSpace: "nowrap",
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 4,
-                            }}
-                        >
-                            <span style={{ fontSize: 10 }}>{CATEGORY_ICONS[cat.key] || ""}</span>
-                            {cat.label}
-                        </button>
-                    ))}
+                    <div className={widgetCardStyles.tabs} style={{ width: "max-content" }}>
+                        {categories.map((cat) => (
+                            <button
+                                key={cat.key}
+                                onClick={() => setActiveCategory(cat.key)}
+                                className={`${widgetCardStyles.tab} ${activeCategory === cat.key ? widgetCardStyles.tabActive : ""
+                                    }`}
+                                style={
+                                    activeCategory === cat.key
+                                        ? { color: "var(--accent-purple)" }
+                                        : undefined
+                                }
+                            >
+                                {cat.label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             )}
 
@@ -244,7 +226,7 @@ export default function LLMLeaderboard() {
                             </div>
                         </a>
                     ))}
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 0 2px", fontSize: 9, color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 14px 12px", fontSize: 9, color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
                         <a href="https://lmarena.ai/leaderboard" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent-blue)" }}>LMSYS Chatbot Arena</a>
                         {currentData?.updated && <span>Updated {currentData.updated}</span>}
                     </div>
