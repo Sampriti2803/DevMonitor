@@ -59,13 +59,16 @@
 }
 
 /* ---------- Reset & Base ---------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   background: var(--bg-primary);
   color: var(--text-primary);
@@ -82,6 +85,7 @@ a {
   text-decoration: none;
   transition: color 0.15s ease;
 }
+
 a:hover {
   color: var(--text-primary);
 }
@@ -91,47 +95,79 @@ a:hover {
   width: 4px;
   height: 4px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--border-primary);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border-hover);
 }
 
 /* ---------- Animations ---------- */
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
 }
 
 @keyframes pulse-dot {
-  0%, 100% { 
+
+  0%,
+  100% {
     transform: scale(1);
     box-shadow: 0 0 0 0 var(--dot-color, var(--accent-green));
   }
-  50% { 
+
+  50% {
     transform: scale(1.1);
     box-shadow: 0 0 8px 2px var(--dot-color, var(--accent-green));
   }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(-8px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .animate-in {
@@ -143,14 +179,37 @@ a:hover {
   font-family: var(--font-mono);
 }
 
-.text-green { color: var(--accent-green); }
-.text-red { color: var(--accent-red); }
-.text-amber { color: var(--accent-amber); }
-.text-blue { color: var(--accent-blue); }
-.text-purple { color: var(--accent-purple); }
-.text-cyan { color: var(--accent-cyan); }
-.text-orange { color: var(--accent-orange); }
-.text-muted { color: var(--text-tertiary); }
+.text-green {
+  color: var(--accent-green);
+}
+
+.text-red {
+  color: var(--accent-red);
+}
+
+.text-amber {
+  color: var(--accent-amber);
+}
+
+.text-blue {
+  color: var(--accent-blue);
+}
+
+.text-purple {
+  color: var(--accent-purple);
+}
+
+.text-cyan {
+  color: var(--accent-cyan);
+}
+
+.text-orange {
+  color: var(--accent-orange);
+}
+
+.text-muted {
+  color: var(--text-tertiary);
+}
 
 /* ---------- Badge / Pill ---------- */
 .badge {
@@ -170,26 +229,32 @@ a:hover {
   background: var(--accent-green-dim);
   color: var(--accent-green);
 }
+
 .badge-red {
   background: var(--accent-red-dim);
   color: var(--accent-red);
 }
+
 .badge-amber {
   background: var(--accent-amber-dim);
   color: var(--accent-amber);
 }
+
 .badge-blue {
   background: var(--accent-blue-dim);
   color: var(--accent-blue);
 }
+
 .badge-purple {
   background: var(--accent-purple-dim);
   color: var(--accent-purple);
 }
+
 .badge-cyan {
   background: var(--accent-cyan-dim);
   color: var(--accent-cyan);
 }
+
 .badge-orange {
   background: var(--accent-orange-dim);
   color: var(--accent-orange);
@@ -202,21 +267,25 @@ a:hover {
   border-radius: 50%;
   flex-shrink: 0;
 }
+
 .status-dot.operational {
   background: var(--accent-green);
   --dot-color: var(--accent-green);
   animation: pulse-dot 2s ease-in-out infinite;
 }
+
 .status-dot.degraded {
   background: var(--accent-amber);
   --dot-color: var(--accent-amber);
   animation: pulse-dot 1.5s ease-in-out infinite;
 }
+
 .status-dot.down {
   background: var(--accent-red);
   --dot-color: var(--accent-red);
   animation: pulse-dot 1s ease-in-out infinite;
 }
+
 .status-dot.unknown {
   background: var(--text-muted);
 }
@@ -225,12 +294,10 @@ a:hover {
 .skeleton-line {
   height: 12px;
   border-radius: 4px;
-  background: linear-gradient(
-    90deg,
-    var(--border-subtle) 25%,
-    var(--border-primary) 50%,
-    var(--border-subtle) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--border-subtle) 25%,
+      var(--border-primary) 50%,
+      var(--border-subtle) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s ease-in-out infinite;
 }
@@ -247,10 +314,15 @@ a:hover {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
   gap: var(--grid-gap);
   padding: var(--grid-gap);
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
+}
+
+.widget-grid>* {
+  min-height: 0;
+  min-width: 0;
 }
 
 @media (max-width: 1400px) {

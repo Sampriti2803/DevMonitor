@@ -1,0 +1,92 @@
+/* DashboardGrid — drag-and-drop grid cells */
+
+.grid {
+  position: relative;
+}
+
+/* ---- Individual cell wrapper ---- */
+.cell {
+  position: relative;
+  height: 100%;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  border-radius: var(--card-radius);
+}
+
+.cell:hover .dragHandle {
+  opacity: 1;
+}
+
+/* ---- Drag handle grip ---- */
+.dragHandle {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-primary);
+  color: var(--text-muted);
+  opacity: 0;
+  cursor: grab;
+  transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+  pointer-events: all;
+}
+
+.dragHandle:hover {
+  color: var(--text-secondary);
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+/* ---- Dragging state ---- */
+.dragging {
+  opacity: 0.35;
+  transform: scale(0.97);
+}
+
+/* ---- Drop target indicator ---- */
+.dropTarget {
+  outline: 2px dashed var(--accent-blue);
+  outline-offset: -2px;
+  border-radius: var(--card-radius);
+}
+
+.dropTarget::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  background: rgba(59, 130, 246, 0.06);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ---- Empty dashboard state ---- */
+.emptyDashboard {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-align: center;
+  gap: 8px;
+}
+
+.emptyHint {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
